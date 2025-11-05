@@ -1,18 +1,17 @@
 # 🧩 USAHAKU-BE
 
-**Backend API untuk platform manajemen usaha — Usahaku**  
-Dibangun menggunakan **NestJS 11**, **TypeScript 5**, dan **MongoDB** sebagai basis data utama.  
+**Backend API untuk platform manajemen usaha — Usahaku**
+
+Backend ini dibangun menggunakan **NestJS** dan **TypeScript**, dengan **MongoDB** sebagai basis data utama.
 Proyek ini dirancang dengan arsitektur **monolith modular**, sehingga mudah dikembangkan dan dapat dipecah menjadi microservices di tahap selanjutnya.
 
----
+[![Stars](https://img.shields.io/github/stars/BhinnekaDev/USAHAKU-BE?style=flat-square)](https://github.com/BhinnekaDev/USAHAKU-BE/stargazers)
+[![Forks](https://img.shields.io/github/forks/BhinnekaDev/USAHAKU-BE?style=flat-square)](https://github.com/BhinnekaDev/USAHAKU-BE/network)
+[![Last Commit](https://img.shields.io/github/last-commit/BhinnekaDev/USAHAKU-BE?style=flat-square)](https://github.com/BhinnekaDev/USAHAKU-BE/commits/master)
 
-[![Stars](https://img.shields.io/github/stars/BhinnekaDev/USAHAKU-BE?style=flat-square)](https://github.com/BhinnekaDev/USAHAKU-BE/stargazers)  
-[![Forks](https://img.shields.io/github/forks/BhinnekaDev/USAHAKU-BE?style=flat-square)](https://github.com/BhinnekaDev/USAHAKU-BE/network)  
-[![Last Commit](https://img.shields.io/github/last-commit/BhinnekaDev/USAHAKU-BE?style=flat-square)](https://github.com/BhinnekaDev/USAHAKU-BE/commits/main)
-
-![Platform](https://img.shields.io/badge/platform-API-blue?style=flat-square)  
-![NestJS](https://img.shields.io/badge/NestJS-11-red?logo=nestjs&style=flat-square)  
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white&style=flat-square)  
+![Platform](https://img.shields.io/badge/platform-API-blue?style=flat-square)
+![NestJS](https://img.shields.io/badge/NestJS-11-red?logo=nestjs&style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white&style=flat-square)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb&logoColor=white&style=flat-square)
 
 ---
@@ -22,9 +21,8 @@ Proyek ini dirancang dengan arsitektur **monolith modular**, sehingga mudah dike
 | Layer          | Stack / Library                    |
 | -------------- | ---------------------------------- |
 | **Backend**    | NestJS 11, TypeScript 5            |
-| **Database**   | MongoDB (via Mongoose)             |
+| **Database**   | MongoDB (Mongoose)                 |
 | **Validation** | class-validator, class-transformer |
-| **Auth**       | JWT + Passport                     |
 | **Testing**    | Jest, Supertest                    |
 | **Linting**    | ESLint, Prettier                   |
 
@@ -32,21 +30,18 @@ Proyek ini dirancang dengan arsitektur **monolith modular**, sehingga mudah dike
 
 ## 📁 Struktur Direktori
 
-```bash
-usahaku-be/
 ```
 
-````
+```
 
 ---
 
 ## 🚀 Modul API
 
-| Modul    | Deskripsi                               |
-| -------- | --------------------------------------- |
-| **Auth** | Registrasi, login, JWT token management |
+| Modul | Deskripsi |
+| ----- | --------- |
 
-> ⚠️ Catatan: Modul tambahan seperti _Notification_ atau _Analytics_ dapat ditambahkan kemudian.
+> ⚠️ Catatan: Modul dapat dikembangkan atau ditambah sesuai kebutuhan bisnis.
 
 ---
 
@@ -62,30 +57,29 @@ Buat file `.env` di root project:
 
 ## 🧩 Koneksi MongoDB
 
-File `src/config/database.config.ts`:
+`src/config/database.config.ts`:
 
 ```ts
 import { MongooseModule } from '@nestjs/mongoose';
 
-export const DatabaseModule = MongooseModule.forRoot(process.env.MONGO_URI!);
+export const DatabaseConfig = MongooseModule.forRoot(process.env.MONGO_URI);
 ```
-
-> Gunakan `!` agar TypeScript tahu bahwa variabel `.env` sudah terdefinisi.
 
 ---
 
 ## 🛠️ Script NPM
 
-| Perintah            | Fungsi                                 |
-| ------------------- | -------------------------------------- |
-| `npm run start:dev` | Jalankan server dalam mode development |
-| `npm run start`     | Jalankan server NestJS                 |
-| `npm run build`     | Build project untuk production         |
-| `npm run lint`      | Jalankan ESLint & perbaiki otomatis    |
-| `npm run format`    | Format kode menggunakan Prettier       |
-| `npm run test`      | Jalankan unit test dengan Jest         |
-| `npm run test:e2e`  | Jalankan end-to-end test               |
-| `npm run test:cov`  | Generate laporan coverage              |
+| Perintah             | Fungsi                                 |
+| -------------------- | -------------------------------------- |
+| `npm run start:dev`  | Jalankan server dalam mode development |
+| `npm run start`      | Jalankan server NestJS                 |
+| `npm run build`      | Build project                          |
+| `npm run lint`       | Jalankan ESLint & perbaiki otomatis    |
+| `npm run format`     | Format kode menggunakan Prettier       |
+| `npm run test`       | Jalankan unit test dengan Jest         |
+| `npm run test:watch` | Jalankan test dengan mode watch        |
+| `npm run test:e2e`   | Jalankan end-to-end test               |
+| `npm run test:cov`   | Generate laporan coverage              |
 
 ---
 
@@ -112,8 +106,7 @@ npm install
 npm run start:dev
 ```
 
-Server akan berjalan di:
-➡️ **[http://localhost:3000](http://localhost:3000)**
+Server akan berjalan di `http://localhost:PORT`.
 
 ---
 
@@ -141,8 +134,8 @@ npm run test:cov
 
 ## 🤝 Kontribusi
 
-1. Fork repo ➜ buat branch baru (`feature/add-module`, `fix/auth-bug`, dsb)
-2. Tambahkan fitur atau endpoint baru
+1. Fork repo ➜ buat branch baru (`feature/example-module`, `fix/example-bug`, dsb)
+2. Tambahkan fitur atau endpoint API baru
 3. Jalankan `npm run lint` dan pastikan semua test lolos
 4. Buat Pull Request dengan deskripsi perubahan yang jelas
 
@@ -151,4 +144,5 @@ npm run test:cov
 ## 📜 Lisensi
 
 UNLICENSED © 2025 [Bhinneka Dev](https://github.com/BhinnekaDev)
-````
+
+---
