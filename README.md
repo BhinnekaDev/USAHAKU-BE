@@ -50,7 +50,16 @@ Proyek ini dirancang dengan arsitektur **monolith modular**, sehingga mudah dike
 Buat file `.env` di root project:
 
 ```env
+# Server
+PORT=3000
+NODE_ENV=development
 
+# MongoDB
+MONGO_URI=your_mongo_uri
+
+# JWT
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=7d
 ```
 
 ---
