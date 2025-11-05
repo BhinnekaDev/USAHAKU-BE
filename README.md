@@ -31,7 +31,19 @@ Proyek ini dirancang dengan arsitektur **monolith modular**, sehingga mudah dike
 ## 📁 Struktur Direktori
 
 ```
-
+USAHAKU-BE/
+├── src/
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   ├── main.ts
+├── test/
+│   └── app.e2e-spec.ts
+├── .env
+├── package.json
+├── tsconfig.json
+├── nest-cli.json
+└── README.md
 ```
 
 ---
@@ -60,18 +72,6 @@ MONGO_URI=your_mongo_uri
 # JWT
 JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=7d
-```
-
----
-
-## 🧩 Koneksi MongoDB
-
-`src/config/database.config.ts`:
-
-```ts
-import { MongooseModule } from '@nestjs/mongoose';
-
-export const DatabaseConfig = MongooseModule.forRoot(process.env.MONGO_URI);
 ```
 
 ---
