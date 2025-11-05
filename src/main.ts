@@ -1,7 +1,10 @@
-import { AppModule } from './app.module';
-import { NestFactory } from '@nestjs/core';
-import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as admin from 'firebase-admin';
+import { getApps } from 'firebase-admin/app';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -21,6 +24,34 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
+
+  const config = new DocumentBuilder()
+    .setTitle('Usahaku API')
+    .setDescription(
+      'API documentation untuk backend Usahaku (NestJS + MongoDB + Firebase Auth)',
+    )
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+
+  if (!getApps().length) {
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: (process.env.FIREBASE_PRIVATE_KEY ?? '').replace(
+          /\\n/g,
+          '\n',
+        ),
+      }),
+    });
+    console.log('🔥 Firebase admin initialized in main.ts');
+  } else {
+    console.log('⚙️ Firebase already initialized, reusing existing app');
+  }
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(port);
 
