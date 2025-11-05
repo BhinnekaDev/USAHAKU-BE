@@ -1,4 +1,3 @@
-````markdown
 # 🧩 USAHAKU-BE
 
 **Backend API untuk platform manajemen usaha — Usahaku**  
@@ -35,28 +34,8 @@ Proyek ini dirancang dengan arsitektur **monolith modular**, sehingga mudah dike
 
 ```bash
 usahaku-be/
-├── src/
-│   ├── main.ts
-│   ├── app.module.ts
-│   ├── config/
-│   │   └── database.config.ts
-│   ├── common/
-│   │   ├── decorators/
-│   │   ├── filters/
-│   │   ├── guards/
-│   │   └── interceptors/
-│   ├── modules/
-│   │   ├── auth/
-│   │   ├── user/
-│   │   ├── store/
-│   │   ├── product/
-│   │   └── sales/
-│   └── shared/
-│       └── utils/
-├── .env.example
-├── package.json
-└── tsconfig.json
 ```
+
 ````
 
 ---
@@ -172,7 +151,4 @@ npm run test:cov
 ## 📜 Lisensi
 
 UNLICENSED © 2025 [Bhinneka Dev](https://github.com/BhinnekaDev)
-
-```
-
-```
+````
